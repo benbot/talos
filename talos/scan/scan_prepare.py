@@ -46,7 +46,4 @@ def scan_prepare(self):
     from ..utils.validation_split import validation_split
     self = validation_split(self)
 
-    # set data and len
-    self._data_len = len(self.x)
-
     return self

@@ -42,6 +42,8 @@ class Scan:
     y : ndarray
         1d or 2d array, or a list of arrays with labels for the prediction
         task.
+    gen : Iterator
+        Keras iterator for batch data processing
     params : dict
         Lists all permutations of hyperparameters, a subset of which will be
         selected at random for training and evaluation.
@@ -130,8 +132,9 @@ class Scan:
     global self
 
     def __init__(self,
-                 x,
-                 y,
+                 x=None,
+                 y=None,
+                 gen=None,
                  params,
                  model,
                  experiment_name,
@@ -158,6 +161,7 @@ class Scan:
 
         self.x = x
         self.y = y
+        self.gen = gen
         self.params = params
         self.model = model
         self.experiment_name = experiment_name
